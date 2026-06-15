@@ -162,7 +162,6 @@
             display: none;
         }
 
-        /* Tips remove.bg */
         .remove-bg-tip {
             margin-top: 12px;
             font-size: 0.7rem;
@@ -326,7 +325,7 @@
         <div class="controls">
             <div class="info-template">
                 <div class="moon-icon">🌙✨</div>
-                <p>📸 Template Ucapan 1 Muharram 1448 H<br>Area Foto: 180 x 225 px<br>Posisi: X=655, Y=208</p>
+                <p>📸 Template Ucapan 1 Muharram 1448 H<br>Area Foto: 197 x 232 px<br>Posisi: X=536, Y=1084</p>
             </div>
 
             <div class="upload-area" id="uploadArea">
@@ -334,7 +333,6 @@
                 <p>Klik atau tarik foto ke sini</p>
                 <input type="file" id="photoInput" accept="image/jpeg, image/png, image/webp">
                 
-                <!-- PETUNJUK HAPUS LATAR BELAKANG DENGAN remove.bg -->
                 <div class="remove-bg-tip">
                     💡 <strong>Tips agar hasil maksimal:</strong><br>
                     Sebelum upload, <a href="https://www.remove.bg/id" target="_blank">hapus latar belakang foto Anda di remove.bg</a><br>
@@ -349,12 +347,12 @@
 
             <div class="slider-group">
                 <label>⬅️ Geser Horizontal ➡️</label>
-                <input type="range" id="offsetXSlider" min="-150" max="150" value="0" step="2">
+                <input type="range" id="offsetXSlider" min="-180" max="180" value="0" step="2">
             </div>
 
             <div class="slider-group">
                 <label>⬆️ Geser Vertikal ⬇️</label>
-                <input type="range" id="offsetYSlider" min="-150" max="150" value="0" step="2">
+                <input type="range" id="offsetYSlider" min="-180" max="180" value="0" step="2">
             </div>
 
             <div class="btn-group">
@@ -395,12 +393,13 @@
         let photoLoaded = false;
 
         // Area foto persegi panjang sesuai permintaan
-        // Posisi X:655, Y:208, Lebar:180, Tinggi:225 (pada canvas 768x1377)
+        // Ukuran template: 768 x 1377
+        // Posisi foto: X=536, Y=1084, Lebar=197, Tinggi=232
         const photoArea = {
-            x: 655,
-            y: 208,
-            w: 180,
-            h: 225
+            x: 536,
+            y: 1084,
+            w: 197,
+            h: 232
         };
 
         let zoomPercent = 100;
@@ -479,7 +478,7 @@
                 return;
             }
 
-            // Gambar template
+            // Gambar template (ukuran 768x1377, posisi 0,0)
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height);
 
